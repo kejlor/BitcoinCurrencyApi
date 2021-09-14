@@ -25,24 +25,12 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
-//            var myList: List<BitcoinItem> by remember {
-//                mutableStateOf(listOf())
-//            }
             var currency by remember {
                 mutableStateOf("")
             }
             var value by remember {
                 mutableStateOf("")
             }
-
-//            viewModel.getRates()
-//            viewModel.myResponseList.observe(this, Observer {
-//                for (bitcoinItem in it) {
-//                    Log.d(TAG, bitcoinItem.code)
-//                    Log.d(TAG, bitcoinItem.rate.toString())
-//                    Log.d(TAG, bitcoinItem.name)
-//                }
-//            })
             viewModel.getUsd()
             viewModel.myResponse.observe(this, Observer {
                 Log.d(TAG, it.code)
@@ -84,11 +72,6 @@ fun ApplicationUI(currency: String, cryptoValue: String) {
                         .fillMaxSize(), contentAlignment = Alignment.TopCenter
                 ) {
                    Text(text = "$currency value: $cryptoValue", textAlign = TextAlign.Center)
-//                    LazyColumn {
-//                        items(items = myList) { item ->
-//                        Text(text = "${item.name} value: ${item.rate}")
-//                        }
-//                    }
                 }
             }
         }

@@ -9,6 +9,4 @@ interface BitcoinApi {
     suspend fun getRates(): List<BitcoinItem>
     @GET("rates/usd")
     suspend fun getUsd(): BitcoinItem
-    @GET("rates")
-    suspend fun getLimitedRates(@Query("limit") limit: Int, @Query("offset")offset: Int): List<BitcoinItem>
 }

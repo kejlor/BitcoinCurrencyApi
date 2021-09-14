@@ -24,10 +24,4 @@ class MainActivityViewModel : ViewModel() {
             myResponse.value = AppModule.retrofit.getUsd()
         }
     }
-
-    fun getLimitedRates() {
-        viewModelScope.launch {
-            myResponseList.value = AppModule.retrofit.getLimitedRates(25, 3)
-        }
-    }
 }
